@@ -112,3 +112,39 @@ func BenchmarkBase64Decode(b *testing.B) {
 		base64.StdEncoding.DecodeString(encodedData)
 	}
 }
+
+func TestEncodePrintableChars(t *testing.T) {
+	const maxChar = 126
+
+	// Test different combinations of binary data inputs
+	testCases := [][]byte{
+		// Some random binary data
+		{0x12, 0x34, 0x56, 0x78, 0x9a, 0xbc, 0xde, 0xf0},
+		// Maximum and minimum values
+		{0x00, 0x7f, 0x80, 0xff},
+		// All zeros
+		{0x00, 0x00, 0x00, 0x00},
+		// All ones
+		{0xff, 0xff, 0xff, 0xff},
+	}
+
+	// Generate longer binary data for testing
+	for i := 0; i < 100; i++ {
+		data := make([]byte, 1000*(i+1))
+		for j := range data {
+			data[j] = byte((i * j) % maxChar)
+		}
+		testCases = append(testCases, data)
+	}
+
+	for _, testData := range testCases {
+		encodedData := Encode(testData)
+
+		// Check if all characters in the encoded output are printable
+		for _, char := range encodedData {
+			if char < minChar || char > maxChar {
+				t.Errorf("Encode result contains non-printable character: %q", char)
+			}
+		}
+	}
+}
