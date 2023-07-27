@@ -1,5 +1,8 @@
 # Base94
 
+[![AutoTest](https://github.com/abbychau/base94/actions/workflows/trigger.yml/badge.svg)](https://github.com/abbychau/base94/actions/workflows/trigger.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/abbychau/base94.svg)](https://pkg.go.dev/github.com/abbychau/base94)
+
 Base94 is a Go library for encoding and decoding binary data using a custom character set, which includes characters ranging from decimal 33 ('!') to decimal 126 ('~'). This library allows you to represent binary data using a set of printable ASCII characters, making it easy to copy and paste the encoded data.
 
 # Why Base94?
