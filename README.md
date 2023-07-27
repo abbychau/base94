@@ -11,9 +11,7 @@ Base94 is an encoding scheme that uses a larger character set compared to popula
 
 Base94 provides a simple and straightforward way to encode and decode binary data, making it ideal for use cases where you want to convert binary data to a printable format without relying on more complex encryption or compression algorithms.
 
-# Performance
 
-Base94 offers a significant performance advantage over the built-in Base64 encoding and decoding functions provided by Go's standard library. Through careful optimization and utilization of bitwise operations, Base94 achieves approximately three times faster encoding and decoding speeds.
 
 # Sample Usage
 
@@ -43,7 +41,13 @@ func main() {
 
 Please note that Base94 is intended for non-critical or non-sensitive use cases. If you require more secure data encryption, consider using stronger encryption algorithms. Base94 is designed for situations where the main goal is to represent binary data in a printable format for ease of sharing and handling.
 
+# Performance
+
+Base94 offers a significant performance advantage over the built-in Base64 encoding and decoding functions provided by Go's standard library. Through careful optimization and utilization of bitwise operations, Base94 achieves approximately three times faster encoding and decoding speeds.
+
 # Benchmark
+
+Benchmark results on a 2.4 GHz 8-Core Intel Core i9 processor, encoding and decoding 1 MB of data:
 
 ```
 goos: darwin
